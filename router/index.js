@@ -6,7 +6,7 @@ import Welcome from '../components/Welcome';
 const RouterComponent = () => {
   return (
     <Router sceneStyle={styles.container}>
-      <Scene key="test" component={Welcome} />
+      <Scene title="30 days of React" key="welcome" component={Welcome} />
     </Router>
   );
 };

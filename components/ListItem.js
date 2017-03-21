@@ -6,18 +6,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 class ListItem extends Component {
   render() {
-    const { key, title, route } = this.props.item;
+    const { key, title, route, isFA, icon, size, color, hideNav } = this.props.item;
     return (
       <TouchableHighlight
         key={key}
-        onPress={() => { Actions[route]() }}
-        underlayColor="rgba(0,0,0,0)"
+        onPress={() => { Actions[route](); }}
+        underlayColor="#eee"
         style={styles.row}
       >
         <View >
           <Text style={styles.text}>
             {title}
           </Text>
+          { isFA ? <IconFA size={size} name={icon} style={[styles.boxIcon, { color: color }]} />
+            : <Icon size={size} name={icon} style={[styles.boxIcon, { color: color }]} /> }
         </View>
       </TouchableHighlight>
     );
@@ -42,6 +44,10 @@ const styles = {
     flex: 1,
     marginTop: 5,
     fontWeight: 'bold',
+  },
+  boxIcon: {
+    position: 'relative',
+    top: -10,
   },
 };
 

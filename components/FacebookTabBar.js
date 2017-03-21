@@ -43,6 +43,7 @@ class FacebookTabBar extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View style={[styles.tabs, this.props.style]}>
         {this.props.tabs.map((tab, i) => {
@@ -69,14 +70,12 @@ class FacebookTabBar extends Component {
 
 FacebookTabBar.propTypes = {
   goToPage: React.PropTypes.func,
-  scrollValue: React.PropTypes.func,
   activeTab: React.PropTypes.number,
   tabs: React.PropTypes.arrayOf(React.PropTypes.string),
 };
 
 FacebookTabBar.defaultProps = {
   goToPage: () => {},
-  scrollValue: () => {},
   activeTab: null,
   tabs: [],
 };

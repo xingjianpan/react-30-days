@@ -5,26 +5,38 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import FacebookTabBar from './FacebookTabBar';
 import { Card, CardSection } from './common'
 
+const SampleImageCard = () => {
+  return (
+    <Card>
+      <CardSection>
+        <Image style={styles.img} source={require('../assets/images/yt1_s.png')}/>
+      </CardSection>
+      <CardSection>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
+      </CardSection>
+    </Card>
+  );
+};
+
+const LibraryPageCard = () => {
+  return (
+    <Card>
+      <CardSection>
+        <Image style={styles.img} source={require('../assets/images/yt3.png')}/>
+      </CardSection>
+    </Card>
+  );
+}
+
 const HomePage = () => {
   return (
     <View>
-      <Card>
-        <CardSection>
-          <Image style={styles.img} source={{uri:"yt1"}}/>
-        </CardSection>
-
-        <CardSection>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum
-          </Text>
-        </CardSection>
-      </Card>
-
+      <SampleImageCard />
+      <SampleImageCard />
+      <SampleImageCard />
     </View>
   );
 };
@@ -32,10 +44,9 @@ const HomePage = () => {
 const PopularPage = () => {
   return (
     <View>
-      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
-      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+      <SampleImageCard />
+      <SampleImageCard />
+      <SampleImageCard />
     </View>
   );
 };
@@ -43,10 +54,9 @@ const PopularPage = () => {
 const SubscribePage = () => {
   return (
     <View>
-      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
-      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+      <SampleImageCard />
+      <SampleImageCard />
+      <SampleImageCard />
     </View>
   );
 };
@@ -54,10 +64,7 @@ const SubscribePage = () => {
 const LibraryPage = () => {
   return (
     <View>
-      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
-      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
-      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+      <LibraryPageCard />
     </View>
   );
 };
@@ -108,8 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.01)',
   },
   img: {
-    width: 375,
-    height: 550,
+    flex:1
   },
 });
 

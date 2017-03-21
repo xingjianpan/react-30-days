@@ -67,12 +67,6 @@ const styles = {
     flexWrap: 'wrap',
     marginTop: 64,
     width: Util.size.width,
-    borderTopWidth: Util.pixel,
-    borderTopColor: '#ccc',
-    borderLeftWidth: Util.pixel,
-    borderLeftColor: '#ccc',
-    borderRightWidth: Util.pixel,
-    borderRightColor: '#ccc',
   },
 };
 

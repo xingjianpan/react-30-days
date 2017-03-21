@@ -93,11 +93,12 @@ const styles = StyleSheet.create({
 
   },
   tabs: {
-    height: 50,
+    height: 55,
     flexDirection: 'row',
     paddingTop: 5,
     borderWidth: 1,
-    borderTopWidth: 0,
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
     borderLeftWidth: 0,
     borderRightWidth: 0,
     borderBottomColor: 'rgba(0,0,0,0.05)',

@@ -18,8 +18,8 @@ class ListItem extends Component {
           <Text style={styles.text}>
             {title}
           </Text>
-          { isFA ? <IconFA size={size} name={icon} style={[styles.boxIcon, { color: color }]} />
-            : <Icon size={size} name={icon} style={[styles.boxIcon, { color: color }]} /> }
+          { isFA ? <IconFA size={size} name={icon} style={[styles.boxIcon, { color }]} />
+            : <Icon size={size} name={icon} style={[styles.boxIcon, { color }]} /> }
         </View>
       </TouchableHighlight>
     );
@@ -30,14 +30,14 @@ class ListItem extends Component {
 const styles = {
   row: {
     justifyContent: 'center',
-    padding: 5,
+    // padding: 5,
     margin: 1,
     width: 120,
     height: 120,
     backgroundColor: '#F6F6F6',
     alignItems: 'center',
     borderWidth: 1,
-    borderRadius: 5,
+    // borderRadius: 5,
     borderColor: '#CCC',
   },
   text: {

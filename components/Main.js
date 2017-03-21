@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet, ListView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import IconFA from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class Welcome extends Component {
   constructor() {
     super();
     this.state = {
       data: [
-      { key: 1, name: 'Day1', route: 'day1' },
-      { key: 2, name: 'Day2', route: 'day2' },
-      { key: 3, name: 'Day3', route: 'day3' },
-      { key: 4, name: 'Day4', route: 'day4' },
-      { key: 5, name: 'Day5', route: 'day5' },
-      { key: 6, name: 'Day6', route: 'day6' },
-      { key: 7, name: 'Day7', route: 'day7' },
-      { key: 8, name: 'Day8', route: 'day8' },
+        { key: 1,
+          title: 'Day1',
+          isFA: false,
+          icon: 'ios-stopwatch',
+          size: 48,
+          color: '#ff856c',
+          hideNav: false,
+          route: 'day1',
+        },
+        { key: 2, title: 'Day2', route: 'day2' },
+        { key: 3, title: 'Day3', route: 'day3' },
+
       ],
     };
   }
@@ -41,7 +47,7 @@ class Welcome extends Component {
       >
         <View >
           <Text style={styles.text}>
-            {item.name}
+            {item.title}
           </Text>
         </View>
       </TouchableHighlight>

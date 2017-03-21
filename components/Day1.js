@@ -36,7 +36,7 @@ class Day1 extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    paddingVertical: 1,
+    paddingVertical: 5,
     paddingHorizontal: 5,
     flex: 1,
     marginTop: 64,

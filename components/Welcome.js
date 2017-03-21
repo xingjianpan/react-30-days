@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableHighlight, StyleSheet, ListView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class Welcome extends Component {
-  componentWillMount() {
-    const data = [
-      { name: 'tom' },
-      { name: 'tom2' },
-      { name: 'tom3' },
-      { name: 'tom4' },
-      { name: 'tom5' },
-      { name: 'tom6' },
-      { name: 'tom21' },
-      { name: 'tom31' },
-      { name: 'tom41' },
-      { name: 'tom51' },
-    ];
+  constructor() {
+    super();
+    this.state = {
+      data: [
+      { key: 1, name: 'tom', route: 'day1' },
+      { key: 2, name: 'tom2', route: 'day2' },
+      { key: 3, name: 'tom3' },
+      { key: 4, name: 'tom4' },
+      { key: 5, name: 'tom5' },
+      { key: 6, name: 'tom6' },
+      { key: 7, name: 'tom21' },
+      { key: 8, name: 'tom31' },
+      { key: 9, name: 'tom41' },
+      { key: 10, name: 'tom51' },
+      ],
+    };
+  }
 
-    this.createDataSource(data);
+  componentWillMount() {
+    this.createDataSource(this.state.data);
   }
 
   createDataSource(data) {
@@ -26,14 +32,17 @@ class Welcome extends Component {
     this.dataSource = ds.cloneWithRows(data);
   }
 
+
   renderRow(item) {
     return (
       <TouchableHighlight
-        onPress={() => {console.log('pressed')}}
+        key={item.key}
+        onPress={()=>{Actions[item.route]()}}
         underlayColor="rgba(0,0,0,0)"
         style={styles.row}
       >
         <View >
+          <Text>{item.key}</Text>
           <Text style={styles.text}>
             {item.name}
           </Text>

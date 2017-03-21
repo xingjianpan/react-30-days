@@ -1,8 +1,67 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text } from 'react-native';
+import { StyleSheet, ScrollView, Image, View, Text } from 'react-native';
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar, } from "react-native-scrollable-tab-view";
 import Icon from 'react-native-vector-icons/Ionicons';
 import FacebookTabBar from './FacebookTabBar';
+import { Card, CardSection } from './common'
+
+const HomePage = () => {
+  return (
+    <View>
+      <Card>
+        <CardSection>
+          <Image style={styles.img} source={{uri:"yt1"}}/>
+        </CardSection>
+
+        <CardSection>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum
+          </Text>
+        </CardSection>
+      </Card>
+
+    </View>
+  );
+};
+
+const PopularPage = () => {
+  return (
+    <View>
+      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
+      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+    </View>
+  );
+};
+
+const SubscribePage = () => {
+  return (
+    <View>
+      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
+      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+    </View>
+  );
+};
+
+const LibraryPage = () => {
+  return (
+    <View>
+      <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
+      <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
+      <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+    </View>
+  );
+};
+
 
 class Day1 extends Component {
   render() {
@@ -16,19 +75,18 @@ class Day1 extends Component {
         tabBarPosition='bottom'
         tabBarBackgroundColor="#f1f1f1"
       >
-        <ScrollView tabLabel="ios-paper" style={styles.tabView}>
-          <Icon name="logo-apple" color="black" size={300} style={styles.icon} />
-          <Icon name="ios-phone-portrait" color="black" size={300} style={styles.icon} />
-          <Icon name="logo-apple" color="#DBDDDE" size={300} style={styles.icon} />
-          <Icon name="ios-phone-portrait" color="#DBDDDE" size={300} style={styles.icon} />
+        <ScrollView tabLabel="ios-home" style={styles.tabView}>
+          <HomePage />
         </ScrollView>
-        <ScrollView tabLabel="ios-chatboxes" style={styles.tabView}>
-          <Icon name="logo-android" color="#A4C639" size={300} style={styles.icon} />
-          <Icon name="logo-android" color="black" size={300} style={styles.icon} />
-          <Icon name="logo-android" color="brown" size={300} style={styles.icon} />
+        <ScrollView tabLabel="ios-flame" style={styles.tabView}>
+          <PopularPage />
         </ScrollView>
-        <Text tabLabel="ios-notifications" style={styles.tabView}>Tab 3</Text>
-        <Text tabLabel="ios-list" style={styles.tabView}>Tab 4</Text>
+        <ScrollView tabLabel="ios-albums-outline" style={styles.tabView}>
+          <SubscribePage />
+        </ScrollView>
+        <ScrollView tabLabel="md-folder" style={styles.tabView}>
+          <LibraryPage />
+        </ScrollView>
       </ScrollableTabView>
     );
   }
@@ -48,6 +106,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: 'rgba(0,0,0,0.01)',
+  },
+  img: {
+    width: 375,
+    height: 550,
   },
 });
 

@@ -15,6 +15,7 @@ class FacebookTabBar extends Component {
     super(props);
     this.state = {
       tabIcons: [],
+      titles:['首页', '时下流行', '订阅内容', '媒体库']
     };
   }
 
@@ -34,11 +35,11 @@ class FacebookTabBar extends Component {
     });
   }
 
-  // color between rgb(59,89,152) and rgb(204,204,204)
+  // color between rgb(229,45,39) and rgb(204,204,204)
   iconColor(progress) {
-    const red = 59 + (204 - 59) * progress;
-    const green = 89 + (204 - 89) * progress;
-    const blue = 152 + (204 - 152) * progress;
+    const red = 229 + (204 - 229) * progress;
+    const green = 45 + (204 - 45) * progress;
+    const blue = 39 + (204 - 39) * progress;
     return `rgb(${red}, ${green}, ${blue})`;
   }
 
@@ -56,9 +57,14 @@ class FacebookTabBar extends Component {
               <Icon
                 name={tab}
                 size={30}
-                color={this.props.activeTab === i ? 'rgb(59,89,152)' : 'rgb(204,204,204)'}
+                color={this.props.activeTab === i ? 'rgb(229,45,39)' : 'rgb(204,204,204)'}
                 ref={(icon) => { this.state.tabIcons[i] = icon; }}
               />
+              <Text
+                style={styles.title}
+              >
+                {this.state.titles[i]}
+              </Text>
             </TouchableOpacity>
           );
         })}
@@ -85,10 +91,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 10,
+
   },
   tabs: {
-    height: 45,
+    height: 50,
     flexDirection: 'row',
     paddingTop: 5,
     borderWidth: 1,
@@ -96,6 +102,10 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderRightWidth: 0,
     borderBottomColor: 'rgba(0,0,0,0.05)',
+  },
+  title: {
+    fontSize: 10,
+    paddingBottom: 10,
   },
 });
 

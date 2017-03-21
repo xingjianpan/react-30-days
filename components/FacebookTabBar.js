@@ -43,18 +43,23 @@ class FacebookTabBar extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
-      <View style={[styles.tabs, this.props.style ]}>
+      <View style={[styles.tabs, this.props.style]}>
         {this.props.tabs.map((tab, i) => {
-          return <TouchableOpacity key={tab} onPress={() => this.props.goToPage(i)} style={styles.tab}>
-            <Icon
-              name={tab}
-              size={30}
-              color={this.props.activeTab === i ? 'rgb(59,89,152)' : 'rgb(204,204,204)'}
-              ref={(icon) => { this.state.tabIcons[i] = icon; }}
-            />
-          </TouchableOpacity>;
+          return (
+            <TouchableOpacity
+              key={tab}
+              onPress={() => this.props.goToPage(i)}
+              style={styles.tab}
+            >
+              <Icon
+                name={tab}
+                size={30}
+                color={this.props.activeTab === i ? 'rgb(59,89,152)' : 'rgb(204,204,204)'}
+                ref={(icon) => { this.state.tabIcons[i] = icon; }}
+              />
+            </TouchableOpacity>
+          );
         })}
       </View>
     );
@@ -64,12 +69,14 @@ class FacebookTabBar extends Component {
 
 FacebookTabBar.propTypes = {
   goToPage: React.PropTypes.func,
+  scrollValue: React.PropTypes.func,
   activeTab: React.PropTypes.number,
   tabs: React.PropTypes.arrayOf(React.PropTypes.string),
 };
 
 FacebookTabBar.defaultProps = {
   goToPage: () => {},
+  scrollValue: () => {},
   activeTab: null,
   tabs: [],
 };

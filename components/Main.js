@@ -3,8 +3,8 @@ import { ListView } from 'react-native';
 import ListItem from './ListItem';
 
 class Welcome extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: [
         { key: 1,

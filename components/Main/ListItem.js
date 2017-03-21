@@ -3,6 +3,7 @@ import { TouchableHighlight, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Util from '../../utils';
 
 class ListItem extends Component {
   render() {
@@ -31,14 +32,14 @@ const styles = {
   row: {
     justifyContent: 'center',
     // padding: 5,
-    margin: 1,
-    width: 120,
-    height: 120,
+
+    width: Util.size.width / 3 - 0.33334,
+    height: Util.size.width / 3,
     backgroundColor: '#F6F6F6',
     alignItems: 'center',
-    borderWidth: 1,
     // borderRadius: 5,
-    borderColor: '#CCC',
+    borderWidth: Util.pixel,
+    borderColor: '#ccc',
   },
   text: {
     flex: 1,

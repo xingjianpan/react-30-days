@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListView } from 'react-native';
 import ListItem from './ListItem';
+import Util from '../../utils';
 
 class Welcome extends Component {
   constructor(props) {
@@ -65,6 +66,13 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 64,
+    width: Util.size.width,
+    borderTopWidth: Util.pixel,
+    borderTopColor: '#ccc',
+    borderLeftWidth: Util.pixel,
+    borderLeftColor: '#ccc',
+    borderRightWidth: Util.pixel,
+    borderRightColor: '#ccc',
   },
 };
 

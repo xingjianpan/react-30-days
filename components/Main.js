@@ -7,16 +7,14 @@ class Welcome extends Component {
     super();
     this.state = {
       data: [
-      { key: 1, name: 'tom', route: 'day1' },
-      { key: 2, name: 'tom2', route: 'day2' },
-      { key: 3, name: 'tom3' },
-      { key: 4, name: 'tom4' },
-      { key: 5, name: 'tom5' },
-      { key: 6, name: 'tom6' },
-      { key: 7, name: 'tom21' },
-      { key: 8, name: 'tom31' },
-      { key: 9, name: 'tom41' },
-      { key: 10, name: 'tom51' },
+      { key: 1, name: 'Day1', route: 'day1' },
+      { key: 2, name: 'Day2', route: 'day2' },
+      { key: 3, name: 'Day3', route: 'day3' },
+      { key: 4, name: 'Day4', route: 'day4' },
+      { key: 5, name: 'Day5', route: 'day5' },
+      { key: 6, name: 'Day6', route: 'day6' },
+      { key: 7, name: 'Day7', route: 'day7' },
+      { key: 8, name: 'Day8', route: 'day8' },
       ],
     };
   }
@@ -42,7 +40,6 @@ class Welcome extends Component {
         style={styles.row}
       >
         <View >
-          <Text>{item.key}</Text>
           <Text style={styles.text}>
             {item.name}
           </Text>

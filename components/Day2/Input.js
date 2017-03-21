@@ -3,8 +3,8 @@ import { TextInput, View, Text } from 'react-native';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
-  const { inputStyle, labelStyle, containerStyle } = styles;
+const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
+  const { inputStyle, containerStyle } = styles;
 
   return (
     <View style={containerStyle}>
@@ -28,12 +28,12 @@ const styles = {
     paddingLeft: 25,
     fontSize: 18,
     lineHeight: 23,
-    flex: 2
+    flex: 2,
   },
   labelStyle: {
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1
+    flex: 1,
   },
   containerStyle: {
     height: 50,
@@ -47,4 +47,4 @@ const styles = {
   },
 };
 
-export { Input };
+export default Input;

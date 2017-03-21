@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
-
-import { Input } from './Input';
-
+import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import Input from './Input';
 
 class Day2 extends Component {
   render() {

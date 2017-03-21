@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-
-import Icon from 'react-native-vector-icons/Ionicons';
+import { StyleSheet, View, Text, TouchableHighlight,  } from 'react-native';
+import IconIO from 'react-native-vector-icons/Ionicons';
+import IconFA from 'react-native-vector-icons/FontAwesome';
+import Util from '../../utils';
 
 class SideMenu extends Component {
   render(){
@@ -10,7 +11,7 @@ class SideMenu extends Component {
       <View style={[styles.container, this.props.sceneStyle]}>
         <View style={styles.list}>
           <View style={styles.titleWrapper}>
-            <Icon
+            <IconIO
               name="ios-search"
               size={20}
               color={'#ecf2f9'}
@@ -20,7 +21,7 @@ class SideMenu extends Component {
             <Text>Search</Text>
           </View>
           <View style={styles.arrowWrapper}>
-            <Icon
+            <IconIO
               name="ios-arrow-forward"
               size={20}
               color={'#a6a6a6'}
@@ -30,6 +31,68 @@ class SideMenu extends Component {
         </View>
         <View style={styles.seperator} />
 
+
+        <View style={styles.sideMenuContainer}>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="map-marker" size={15}></IconFA>
+              <Text style={styles.btnText}>你的地点</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="pencil-square" size={15} />
+              <Text style={styles.btnText}>你的贡献</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="product-hunt" size={15} />
+              <Text style={styles.btnText}>离线区域</Text>
+            </View>
+          </TouchableHighlight>
+
+          <View style={styles.seperator} />
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="road" size={15} />
+              <Text style={styles.btnText}>实时路况</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="bus" size={15} />
+              <Text style={styles.btnText}>公交线路</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="bicycle" size={15} />
+              <Text style={styles.btnText}>骑车线路</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="photo" size={15} />
+              <Text style={styles.btnText}>卫星图像</Text>
+            </View>
+          </TouchableHighlight>
+
+          <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
+            <View style={styles.btn}>
+              <IconFA style={styles.btnIcon} name="tree" size={15} />
+              <Text style={styles.btnText}>地形</Text>
+            </View>
+          </TouchableHighlight>
+
+        </View>
       </View>
     );
   }
@@ -80,6 +143,36 @@ const styles = StyleSheet.create({
     height: 0.5,
   },
 
+  sideMenuContainer: {
+    flex: 1,
+    // backgroundColor: "#fff",
+    // shadowColor: "#000",
+    // shadowOpacity: 0.3,
+    // shadowRadius: 5,
+    // shadowOffset: {
+    //   height: 0,
+    //   width: 2,
+    // },
+  },
+  btn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 15,
+    paddingBottom: 15,
+    // backgroundColor: '#fff',
+  },
+  btnIcon: {
+    flex: 1,
+    textAlign: 'center',
+    color: '#555',
+  },
+  btnText: {
+    flex: 3,
+    fontSize: 14,
+    fontWeight: '500',
+    paddingLeft: 20,
+    color: '#454545',
+  },
 });
 
 

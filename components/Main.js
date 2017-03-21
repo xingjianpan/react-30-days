@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableHighlight, StyleSheet, ListView } from 'rea
 import { Actions } from 'react-native-router-flux';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ListItem from './ListItem';
 
 class Welcome extends Component {
   constructor() {
@@ -19,8 +20,6 @@ class Welcome extends Component {
           route: 'day1',
         },
         { key: 2, title: 'Day2', route: 'day2' },
-        { key: 3, title: 'Day3', route: 'day3' },
-
       ],
     };
   }
@@ -39,18 +38,7 @@ class Welcome extends Component {
 
   renderRow(item) {
     return (
-      <TouchableHighlight
-        key={item.key}
-        onPress={()=>{Actions[item.route]()}}
-        underlayColor="rgba(0,0,0,0)"
-        style={styles.row}
-      >
-        <View >
-          <Text style={styles.text}>
-            {item.title}
-          </Text>
-        </View>
-      </TouchableHighlight>
+      <ListItem item={item} />
     );
   }
 

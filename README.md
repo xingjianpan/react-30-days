@@ -10,3 +10,8 @@ Day 1
 ---------
 Youtube scrollable tab
 Reference: https://github.com/brentvatne/react-native-scrollable-tab-view
+
+
+Day 2
+-----
+Youtube header 

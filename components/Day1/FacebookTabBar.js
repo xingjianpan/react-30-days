@@ -1,4 +1,4 @@
-// source: https://github.com/skv-headless/react-native-scrollable-tab-view/blob/master/examples/FacebookTabsExample/FacebookTabBar.js
+// Adapted from https://github.com/skv-headless/react-native-scrollable-tab-view/blob/master/examples/FacebookTabsExample/FacebookTabBar.js
 
 import React, { Component } from 'react';
 import {
@@ -44,7 +44,6 @@ class FacebookTabBar extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <View style={[styles.tabs, this.props.style]}>
         {this.props.tabs.map((tab, i) => {

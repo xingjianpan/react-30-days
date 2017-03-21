@@ -3,13 +3,13 @@ import { StyleSheet, ScrollView, Image, View, Text } from 'react-native';
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar, } from "react-native-scrollable-tab-view";
 import Icon from 'react-native-vector-icons/Ionicons';
 import FacebookTabBar from './FacebookTabBar';
-import { Card, CardSection } from './common'
+import { Card, CardSection } from '../common';
 
-const SampleImageCard = () => {
+const SampleCard = () => {
   return (
     <Card>
       <CardSection>
-        <Image style={styles.img} source={require('../assets/images/yt1_s.png')}/>
+        <Image style={styles.img} source={require('../../assets/images/yt1_s.png')} />
       </CardSection>
       <CardSection>
         <Text>
@@ -21,22 +21,13 @@ const SampleImageCard = () => {
   );
 };
 
-const LibraryPageCard = () => {
-  return (
-    <Card>
-      <CardSection>
-        <Image style={styles.img} source={require('../assets/images/yt3.png')}/>
-      </CardSection>
-    </Card>
-  );
-}
 
 const HomePage = () => {
   return (
     <View>
-      <SampleImageCard />
-      <SampleImageCard />
-      <SampleImageCard />
+      <SampleCard />
+      <SampleCard />
+      <SampleCard />
     </View>
   );
 };
@@ -44,9 +35,9 @@ const HomePage = () => {
 const PopularPage = () => {
   return (
     <View>
-      <SampleImageCard />
-      <SampleImageCard />
-      <SampleImageCard />
+      <SampleCard />
+      <SampleCard />
+      <SampleCard />
     </View>
   );
 };
@@ -54,9 +45,9 @@ const PopularPage = () => {
 const SubscribePage = () => {
   return (
     <View>
-      <SampleImageCard />
-      <SampleImageCard />
-      <SampleImageCard />
+      <SampleCard />
+      <SampleCard />
+      <SampleCard />
     </View>
   );
 };
@@ -64,11 +55,12 @@ const SubscribePage = () => {
 const LibraryPage = () => {
   return (
     <View>
-      <LibraryPageCard />
+      <SampleCard />
+      <SampleCard />
+      <SampleCard />
     </View>
   );
 };
-
 
 class Day1 extends Component {
   render() {

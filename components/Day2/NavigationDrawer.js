@@ -12,7 +12,7 @@ export default class extends Component {
         type="displace"
         content={<SideMenu />}
         tapToClose
-        openDrawerOffset={0.2}
+        openDrawerOffset={0.35}
         styles={drawerStyles}
         panCloseMask={0.2}
         negotiatePan

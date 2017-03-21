@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Input from './Input';
-import { Actions } from 'react-native-router-flux';
 
 class Day2 extends Component {
   render() {

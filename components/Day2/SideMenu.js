@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from 'react-native';
 import IconIO from 'react-native-vector-icons/Ionicons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
-import { Actions } from 'react-native-router-flux';
 
 class SideMenu extends Component {
   render() {
@@ -20,9 +19,6 @@ class SideMenu extends Component {
             />
           </View>
         </View>
-
-
-
 
         <ScrollView style={styles.sideMenuContainer}>
 

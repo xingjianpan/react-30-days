@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import IconFA from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class ListItem extends Component {
   render() {

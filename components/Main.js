@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight, StyleSheet, ListView } from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import IconFA from 'react-native-vector-icons/FontAwesome';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { ListView } from 'react-native';
 import ListItem from './ListItem';
 
 class Welcome extends Component {
@@ -60,23 +57,6 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 64,
-  },
-  row: {
-    justifyContent: 'center',
-    padding: 5,
-    margin: 1,
-    width: 120,
-    height: 120,
-    backgroundColor: '#F6F6F6',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#CCC',
-  },
-  text: {
-    flex: 1,
-    marginTop: 5,
-    fontWeight: 'bold',
   },
 };
 

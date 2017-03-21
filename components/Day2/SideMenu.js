@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableHighlight,  } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, ScrollView } from 'react-native';
 import IconIO from 'react-native-vector-icons/Ionicons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
-import Util from '../../utils';
+import { Actions } from 'react-native-router-flux';
 
 class SideMenu extends Component {
-  render(){
+  render() {
     const drawer = this.context.drawer;
     return (
       <View style={[styles.container, this.props.sceneStyle]}>
         <View style={styles.list}>
-          <View style={styles.titleWrapper}>
-            <IconIO
-              name="ios-search"
-              size={20}
-              color={'#ecf2f9'}
-              style={styles.rightArrow}
-            />
 
-            <Text>Search</Text>
-          </View>
           <View style={styles.arrowWrapper}>
             <IconIO
-              name="ios-arrow-forward"
+              name="ios-arrow-down"
               size={20}
               color={'#a6a6a6'}
               style={styles.rightArrow}
             />
           </View>
         </View>
-        <View style={styles.seperator} />
 
 
-        <View style={styles.sideMenuContainer}>
+
+
+        <ScrollView style={styles.sideMenuContainer}>
 
           <TouchableHighlight underlayColor="#888" onPress={()=>{true}}>
             <View style={styles.btn}>
               <IconFA style={styles.btnIcon} name="map-marker" size={15}></IconFA>
-              <Text style={styles.btnText}>你的地点</Text>
+              <Text style={styles.btnText} >你的地点</Text>
             </View>
           </TouchableHighlight>
 
@@ -92,7 +84,7 @@ class SideMenu extends Component {
             </View>
           </TouchableHighlight>
 
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -106,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    padding: 10,
+    // padding: 10,
   },
   closeButton: {
     width: 20,
@@ -114,9 +106,13 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   list: {
-    paddingTop: 20,
+    // paddingTop: 20,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
+    height: 160,
+    backgroundColor: '#303030',
+    paddingBottom: 15,
+    paddingRight: 15,
   },
   titleWrapper: {
     flex: 3,

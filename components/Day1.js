@@ -34,6 +34,8 @@ class Day1 extends Component {
   }
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',

@@ -16,9 +16,12 @@ class Day4 extends Component {
       <View style={styles.container}>
 
         <View style={styles.displayContainer}>
+          <View style={styles.clockContainer}>
+            <Text style={styles.mainClock}>00:00:00</Text>
+          </View>
           <View style={styles.buttonContainer}>
-            <Button style={{ backgroundColor: '#CCC' }} >Reset</Button>
-            <Button style={{ backgroundColor: 'green' }}>Start</Button>
+            <Button>reset</Button>
+            <Button>start</Button>
           </View>
 
         </View>
@@ -38,19 +41,33 @@ function mapStateToProps(state) {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     marginTop: 64,
   },
   displayContainer: {
     flex: 1.5,
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: 'transparent',
+
+  },
+  clockContainer: {
+    borderWidth: 1,
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainClock: {
+    fontSize: 70,
+    borderWidth: 1,
 
   },
   buttonContainer: {
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     padding: 20,
+    flex: 1,
+    flexDirection: "row",
+    borderWidth: 1,
 
   },
   resultConainer: {

@@ -57,7 +57,7 @@ const styles = {
     alignItems: 'center',
   },
   mainClock: {
-    fontSize: 70,
+    fontSize: 80,
     borderWidth: 1,
 
   },
@@ -75,7 +75,7 @@ const styles = {
     backgroundColor: 'gray',
   },
   button: {
-    fontSize: 20,
+    fontSize: 10,
     color: 'white',
   },
 };

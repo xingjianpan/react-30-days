@@ -25,8 +25,8 @@ const styles = {
 
   buttonContainer: {
     padding: 10,
-    height: 100,
-    width: 100,
+    height: 80,
+    width: 80,
     overflow: 'hidden',
     borderRadius: 50,
     backgroundColor: 'gray',

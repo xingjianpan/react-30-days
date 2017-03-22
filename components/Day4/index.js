@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
-import { Card, CardSection } from '../common';
+import { startClock, stopClock, resetClock, logCurrent } from '../../actions/Day4';
 
 class Day4 extends Component {
   constructor(props, context) {
     super(props, context);
   }
-  _handlePress() {
-    console.log('Pressed!');
+
+  handleResetButton() {
+
+  }
+
+
+  renderStartButton() {
+    if(this.props.started){
+      return <Button onPress={this.props.stopClock.bind(this)}>stop</Button>
+    }
+    return <Button onPress={this.props.startClock.bind(this)}>start</Button>
   }
   render() {
     return (
@@ -20,8 +29,8 @@ class Day4 extends Component {
             <Text style={styles.mainClock}>00:00:00</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button>reset</Button>
-            <Button>start</Button>
+            <Button onPress={this.handleResetButton.bind(this)}>reset</Button>
+            {this.renderStartButton()}
           </View>
 
         </View>
@@ -31,11 +40,6 @@ class Day4 extends Component {
       </View>
     );
   }
-}
-function mapStateToProps(state) {
-  return {
-    clock: state.day4,
-  };
 }
 
 const styles = {
@@ -80,4 +84,12 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps, null)(Day4);
+function mapStateToProps(state) {
+  const { started } = state.day4;
+  return {
+    started
+  };
+}
+
+export default connect(mapStateToProps,
+  { startClock, stopClock, resetClock, logCurrent })(Day4);

@@ -1,24 +1,24 @@
 
 const INITIAL_STATE = {
   started: false,
-  start_timestamp: '',
-  stop_timestamp: '',
-  logs: []
+  startTime: '',
+  stopTime: '',
+  logs: [],
+  watingForAction: true,
 };
 
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log('action: ', action);
   switch (action.type) {
     case 'start':
-      return state
+      return { ...state, startTime: action.payload, started: true };
     case 'stop':
-      return state
+      return { ...state, stopTime: action.payload, started: false, watingForAction: true };
     case 'reset':
-      return state
-    case 'log_current':
-      return state
+      return INITIAL_STATE;
+    case 'logCurrent':
+      return state;
     default:
-      return { ...state };
+      return { ...state, logs: [state.logs, action.payload] };
   }
 };

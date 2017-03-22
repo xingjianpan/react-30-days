@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import Button from 'react-native-button';
 
+
 class ClockButton extends Component {
-  _handlePress() {
-    console.log('Pressed!');
-  }
   render() {
     return (
-
-        <Button
-          containerStyle={[styles.buttonContainer, this.props.style]}
-          style={styles.button}
-          styleDisabled={{color: 'red'}}
-          onPress={() => this._handlePress()}>
-          {this.props.children}
-        </Button>
-
+      <Button
+        containerStyle={[styles.buttonContainer, this.props.style]}
+        style={styles.button}
+        styleDisabled={{color: 'red'}}
+        onPress={this.props.onPress}>
+        {this.props.children}
+      </Button>
     );
   }
 }

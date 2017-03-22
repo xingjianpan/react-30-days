@@ -40,69 +40,88 @@ class Talks extends Component {
   render() {
     const { onScroll = () => {} } = this.props;
     return (
+
+      // Renders a ListView
       <ListView
         ref={(ListView) => { this.ListView = ListView; }}
         style={styles.container}
-        dataSource={ this.state.dataSource }
-        renderRow={(rowData) => (
-          <View key={rowData} style={ styles.row }>
-            <Text style={ styles.rowText }>
+        dataSource={this.state.dataSource}
+        renderRow={rowData => (
+          <View key={rowData} style={styles.row}>
+            <Text style={styles.rowText}>
               { rowData }
             </Text>
           </View>
          )}
+
+        // renderScrollComponent define how a parallax header is rendered
         renderScrollComponent={props => (
           <ParallaxScrollView
             onScroll={onScroll}
 
             headerBackgroundColor="#333"
-            stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
-            parallaxHeaderHeight={ PARALLAX_HEADER_HEIGHT }
+            stickyHeaderHeight={STICKY_HEADER_HEIGHT}
+            parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
             backgroundSpeed={10}
 
+            // the background
             renderBackground={() => (
               <View key="background">
-                <Image source={{uri: 'https://i.ytimg.com/vi/P-NZei5ANaQ/maxresdefault.jpg',
-                                width: window.width,
-                                height: PARALLAX_HEADER_HEIGHT}}/>
-                <View style={{position: 'absolute',
-                              top: 0,
-                              width: window.width,
-                              backgroundColor: 'rgba(0,0,0,.4)',
-                              height: PARALLAX_HEADER_HEIGHT}}/>
+                <Image
+                  source={{ uri: 'https://i.ytimg.com/vi/P-NZei5ANaQ/maxresdefault.jpg',
+                    width: window.width,
+                    height: PARALLAX_HEADER_HEIGHT }}
+                />
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    width: window.width,
+                    backgroundColor: 'rgba(0,0,0,.4)',
+                    height: PARALLAX_HEADER_HEIGHT }}
+                />
               </View>
             )}
 
+            // the foreground
             renderForeground={() => (
-              <View key="parallax-header" style={ styles.parallaxHeader }>
-                <Image style={ styles.avatar } source={{
-                  uri: 'https://pbs.twimg.com/profile_images/2694242404/5b0619220a92d391534b0cd89bf5adc1_400x400.jpeg',
-                  width: AVATAR_SIZE,
-                  height: AVATAR_SIZE
-                }}/>
-                <Text style={ styles.sectionSpeakerText }>
+              <View key="parallax-header" style={styles.parallaxHeader}>
+                <Image
+                  style={styles.avatar}
+                  source={{
+                    uri: 'https://pbs.twimg.com/profile_images/2694242404/5b0619220a92d391534b0cd89bf5adc1_400x400.jpeg',
+                    width: AVATAR_SIZE,
+                    height: AVATAR_SIZE,
+                  }}
+                />
+                <Text style={styles.sectionSpeakerText}>
                   Talks by Rich Hickey
                 </Text>
-                <Text style={ styles.sectionTitleText }>
+                <Text style={styles.sectionTitleText}>
                   CTO of Cognitec, Creator of Clojure
                 </Text>
               </View>
             )}
 
+            // sticky header
             renderStickyHeader={() => (
               <View key="sticky-header" style={styles.stickySection}>
                 <Text style={styles.stickySectionText}>Rich Hickey Talks</Text>
               </View>
             )}
 
+            // fixed header
             renderFixedHeader={() => (
               <View key="fixed-header" style={styles.fixedSection}>
-                <Text style={styles.fixedSectionText}
-                      onPress={() => this.ListView.scrollTo({ x: 0, y: 0 })}>
+                <Text
+                  style={styles.fixedSectionText}
+                  onPress={() => this.ListView.scrollTo({ x: 0, y: 0 })}
+                >
                   Scroll to top
                 </Text>
               </View>
-            )}/>
+            )}
+          />
         )}
       />
     );
@@ -126,32 +145,32 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: window.width,
-    height: PARALLAX_HEADER_HEIGHT
+    height: PARALLAX_HEADER_HEIGHT,
   },
   stickySection: {
     height: STICKY_HEADER_HEIGHT,
     width: 300,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   stickySectionText: {
     color: 'white',
     fontSize: 20,
-    margin: 10
+    margin: 10,
   },
   fixedSection: {
     position: 'absolute',
     bottom: 10,
-    right: 10
+    right: 10,
   },
   fixedSectionText: {
     color: '#999',
-    fontSize: 20
+    fontSize: 20,
   },
   parallaxHeader: {
     alignItems: 'center',
     flex: 1,
     flexDirection: 'column',
-    paddingTop: 100
+    paddingTop: 100,
   },
   avatar: {
     marginBottom: 10,
@@ -160,12 +179,12 @@ const styles = StyleSheet.create({
   sectionSpeakerText: {
     color: 'white',
     fontSize: 24,
-    paddingVertical: 5
+    paddingVertical: 5,
   },
   sectionTitleText: {
     color: 'white',
     fontSize: 18,
-    paddingVertical: 5
+    paddingVertical: 5,
   },
   row: {
     overflow: 'hidden',
@@ -174,11 +193,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderColor: '#ccc',
     borderBottomWidth: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   rowText: {
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });
 
 export default Talks;

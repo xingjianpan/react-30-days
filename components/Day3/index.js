@@ -41,7 +41,7 @@ class Talks extends Component {
     const { onScroll = () => {} } = this.props;
     return (
       <ListView
-        ref="ListView"
+        ref={(ListView) => { this.ListView = ListView; }}
         style={styles.container}
         dataSource={ this.state.dataSource }
         renderRow={(rowData) => (
@@ -98,7 +98,7 @@ class Talks extends Component {
             renderFixedHeader={() => (
               <View key="fixed-header" style={styles.fixedSection}>
                 <Text style={styles.fixedSectionText}
-                      onPress={() => this.refs.ListView.scrollTo({ x: 0, y: 0 })}>
+                      onPress={() => this.ListView.scrollTo({ x: 0, y: 0 })}>
                   Scroll to top
                 </Text>
               </View>
@@ -119,7 +119,7 @@ const STICKY_HEADER_HEIGHT = 70;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   background: {
     position: 'absolute',

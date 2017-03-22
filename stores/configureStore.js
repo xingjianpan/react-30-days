@@ -4,7 +4,9 @@ import reduxThunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers/index';
 
-const logger = createLogger();
+const logger = createLogger({
+  level: 'log',
+});
 
 const createStoreWithMiddleware = applyMiddleware(
   ReduxPromise,

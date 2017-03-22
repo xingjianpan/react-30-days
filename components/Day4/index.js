@@ -15,11 +15,19 @@ class Day4 extends Component {
 
 
   renderStartButton() {
-    if(this.props.started){
-      return <Button onPress={this.props.stopClock.bind(this)}>stop</Button>
+    if (this.props.started) {
+      return <Button onPress={this.props.stopClock.bind(this)}>stop</Button>;
     }
-    return <Button onPress={this.props.startClock.bind(this)}>start</Button>
+    return <Button onPress={this.props.startClock.bind(this)}>start</Button>;
   }
+
+  renderResetButton() {
+    if (this.props.started) {
+      return <Button onPress={this.props.logCurrent.bind(this)}>log</Button>;
+    }
+    return <Button onPress={this.props.resetClock.bind(this)}>reset</Button>;
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -29,7 +37,7 @@ class Day4 extends Component {
             <Text style={styles.mainClock}>00:00:00</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button onPress={this.handleResetButton.bind(this)}>reset</Button>
+            {this.renderResetButton()}
             {this.renderStartButton()}
           </View>
 

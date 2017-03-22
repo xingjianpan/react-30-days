@@ -14,4 +14,12 @@ Reference: https://github.com/brentvatne/react-native-scrollable-tab-view
 
 Day 2
 -----
-Youtube header 
+Google map style drawer menu
+Reference: https://github.com/root-two/react-native-drawer
+
+
+Day 3
+-----
+TED app style parallx scroll view
+Reference: https://github.com/jaysoo/react-native-parallax-scroll-view
+

@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
-var styles = StyleSheet.create({
+const WeatherSwiper = (props) => {
+  return (
+    <Swiper style={styles.wrapper} >
+      <View style={styles.slide1}>
+        <Text style={styles.text}>Hello Swiper</Text>
+      </View>
+      <View style={styles.slide2}>
+        <Text style={styles.text}>Beautiful</Text>
+      </View>
+      <View style={styles.slide3}>
+        <Text style={styles.text}>And simple</Text>
+      </View>
+    </Swiper>
+  );
+};
+
+
+const styles = StyleSheet.create({
   wrapper: {
   },
   slide1: {
@@ -32,25 +49,7 @@ var styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
-  }
-})
+  },
+});
 
-var swiper = React.createClass({
-  render: function() {
-    return (
-      <Swiper style={styles.wrapper} showsButtons={false}>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
-        </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-      </Swiper>
-    )
-  }
-})
-
-export default swiper;
+export default WeatherSwiper;

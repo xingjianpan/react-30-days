@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView ,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -23,6 +24,25 @@ const WeatherSwiper = (props) => {
   );
 };
 
+const WeatherPage = (props) => {
+  return (
+    <View>
+      <WeatherHeader />
+      <WeatherHourlyData />
+      <WeatherDailyData />
+
+    </View>
+  );
+}
+
+const WeatherData = (props) => {
+  return (
+    <View>
+      <WeatherSummary />
+      <WeatherDetails />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -50,6 +70,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  seperator: {
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: '#204060',
+    height: 0.5,
+  },
+
 });
 
 export default WeatherSwiper;

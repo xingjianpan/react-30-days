@@ -44,6 +44,15 @@ class Welcome extends Component {
           color: '#ff856c',
           hideNav: false,
         },
+        { key: 5,
+          title: 'Day5',
+          route: 'day5',
+          isFA: false,
+          icon: 'ios-partly-sunny',
+          size: 60,
+          color: '#90bdc1',
+          hideNav: false,
+        },
       ],
     };
   }

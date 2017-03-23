@@ -7,6 +7,7 @@ import Day2 from '../components/Day2';
 import NavigationDrawer from '../components/Day2/NavigationDrawer';
 import Day3 from '../components/Day3';
 import Day4 from '../components/Day4';
+import Day5 from '../components/Day5';
 
 const RouterComponent = () => {
   return (
@@ -18,6 +19,7 @@ const RouterComponent = () => {
       </Scene>
       <Scene title="Day-3" key="day3" component={Day3} hideNavBar />
       <Scene title="Day-4" key="day4" component={Day4} />
+      <Scene title="Day-5" key="day5" component={Day5} />
     </Router>
   );
 };

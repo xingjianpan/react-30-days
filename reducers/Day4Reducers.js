@@ -1,13 +1,13 @@
 
 const INITIAL_STATE = {
   started: false,
-  startTime: null,
-  stopTime: null,
+  startTime: 0,
+  stopTime: 0,
   logs: [],
   accumulatedTime: 0,
   counter: 0,
   timerId: null,
-  now: null,
+  now: 0,
 };
 
 

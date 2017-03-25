@@ -10,6 +10,17 @@ class Day4 extends Component {
     super(props, context);
   }
 
+  renderTimeFormat(number) {
+    var sec_num = parseInt(number/1000, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+  }
   handleStopButton() {
     this.props.stopClock();
     clearInterval(this.props.timerId);
@@ -46,13 +57,15 @@ class Day4 extends Component {
           return (
             <View style={styles.resultRow}>
               <Text style={styles.resultCounter}>计次：{ this.props.counter - idx} </Text>
-              <Text style={styles.resultText}>{log}</Text>
+              <Text style={styles.resultText}>{this.renderTimeFormat(log)}</Text>
             </View>
           );
         },
       );
     }
   }
+
+
 
   renderInitialResult() {
     let displayTime;
@@ -64,7 +77,7 @@ class Day4 extends Component {
     return (
       <View style={styles.resultRow}>
         <Text style={styles.resultCounter}>当    次:</Text>
-        <Text style={styles.resultText}>{displayTime}</Text>
+        <Text style={styles.resultText}>{this.renderTimeFormat(displayTime)}</Text>
       </View>
     );
   }
@@ -73,10 +86,11 @@ class Day4 extends Component {
     const accumulatedTotal = this.props.logs.reduce((a, b) => a + b, 0) +
       this.props.accumulatedTime;
     if (this.props.started) {
-      return accumulatedTotal + this.props.now - this.props.startTime;
+      return this.renderTimeFormat(
+        accumulatedTotal + this.props.now - this.props.startTime);
     }
     // return this.props.logs.reduce((a, b) => a + b, 0);
-    return accumulatedTotal;
+    return this.renderTimeFormat(accumulatedTotal);
   }
 
   render() {

@@ -34,7 +34,7 @@ class Day4 extends Component {
         (log, idx) => {
           return (
             <View style={styles.resultRow}>
-              <Text style={styles.resultCounter}>{ this.props.counter - idx} </Text>
+              <Text style={styles.resultCounter}>计次：{ this.props.counter - idx} </Text>
               <Text style={styles.resultText}>{log}</Text>
             </View>
           );
@@ -105,8 +105,8 @@ const styles = {
     alignItems: 'center',
     padding: 20,
     flex: 1,
-    flexDirection: "row",
-    borderWidth: 1,
+    flexDirection: 'row',
+    borderBottomWidth: 1,
 
   },
   resultConainer: {
@@ -123,6 +123,7 @@ const styles = {
     height: 50,
     padding: 10,
     borderBottomWidth: 1,
+    borderBottomColor: '#ccc'
   },
   resultText: {
     fontSize: 20,

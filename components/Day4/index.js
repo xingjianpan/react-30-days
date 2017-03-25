@@ -16,10 +16,10 @@ class Day4 extends Component {
   }
 
   handlStartButton() {
-    this.props.startClock();
     const timerId = setInterval(() => {
       this.props.Tick();
-    }, 10);
+    }, 1000);
+    this.props.startClock();
     this.props.setTimer(timerId);
   }
 
@@ -38,7 +38,7 @@ class Day4 extends Component {
   }
 
   renderResults() {
-    if (this.props.logs) {
+    if (this.props.logs.length > 0) {
       return this.props.logs.reverse().map(
         (log, idx) => {
           return (
@@ -50,7 +50,15 @@ class Day4 extends Component {
         },
       );
     }
-    return '';
+  }
+
+  renderInitialResult() {
+    return (
+      <View style={styles.resultRow}>
+        <Text style={styles.resultCounter}>当次：  </Text>
+        <Text style={styles.resultText}>{this.props.now - this.props.startTime}</Text>
+      </View>
+    );
   }
 
   renderDisplay() {
@@ -60,7 +68,7 @@ class Day4 extends Component {
       return accumulatedTotal + this.props.now - this.props.startTime;
     }
     // return this.props.logs.reduce((a, b) => a + b, 0);
-    return accumulatedTotal
+    return accumulatedTotal;
   }
 
   render() {
@@ -79,9 +87,10 @@ class Day4 extends Component {
         </View>
 
         <View style={styles.resultConainer}>
-          <View>
+          <ScrollView>
+            {this.renderInitialResult()}
             { this.renderResults() }
-          </View>
+          </ScrollView>
         </View>
       </View>
     );
@@ -143,10 +152,9 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-  const { started, initialTime, startTime, accumulatedTime, logs, counter, timerId, now } = state.day4;
+  const { started, startTime, accumulatedTime, logs, counter, timerId, now } = state.day4;
   return {
     started,
-    initialTime,
     startTime,
     accumulatedTime,
     logs,

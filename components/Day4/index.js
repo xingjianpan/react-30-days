@@ -36,10 +36,9 @@ class Day4 extends Component {
   }
 
   renderDisplay() {
-    setInterval(
-      () => { },
-      100,
-    );
+    if (this.props.logs) {
+      return this.props.logs.reduce((a, b) => a + b, 0);
+    }
   }
 
   render() {

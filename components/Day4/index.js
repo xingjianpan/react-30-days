@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
 import { startClock, stopClock, resetClock, logCurrent } from '../../actions/Day4';
@@ -30,7 +30,7 @@ class Day4 extends Component {
 
   renderResults() {
     if (this.props.logs) {
-      return this.props.logs.map(log => <Text style={styles.resultText}>{log}</Text>);
+      return this.props.logs.reverse().map(log => <Text style={styles.resultText}>{log}</Text>);
     }
     return '';
   }
@@ -57,7 +57,11 @@ class Day4 extends Component {
         </View>
 
         <View style={styles.resultConainer}>
-          {this.renderResults()}
+          <ScrollView
+            automaticallyAdjustContentInsets
+          >
+            { this.renderResults() }
+          </ScrollView>
         </View>
       </View>
     );

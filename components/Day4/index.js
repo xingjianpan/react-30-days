@@ -62,10 +62,8 @@ class Day4 extends Component {
         dataSource={theDataSource}
         renderRow={(rowData, sectionId, rowId) =>
           <View style={styles.resultRow}>
-            <Text style={styles.resultCounter}> {Number(rowId) + 2}</Text>
-            <View style={{ alignItems: 'center' }}>
+            <Text style={styles.resultCounter}> 计次：{Number(rowId) + 2}</Text>
               <Text style={styles.resultText}>{this.renderTimeFormat(rowData)}</Text>
-            </View>
           </View>
           }
       />
@@ -138,10 +136,10 @@ const styles = {
 
   },
   clockContainer: {
-    borderWidth: 1,
+    // borderWidth: 1,
     flex: 3,
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingLeft: 40,
   },
   mainClock: {
     fontSize: 70,
@@ -153,12 +151,13 @@ const styles = {
     padding: 20,
     flex: 1,
     flexDirection: 'row',
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
 
   },
   resultConainer: {
     flex: 1,
     backgroundColor: 'white',
+    flexDirection: 'row',
   },
   button: {
     fontSize: 10,
@@ -166,15 +165,22 @@ const styles = {
   },
   resultRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'center',
     height: 50,
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
+
+  resultCounter: {
+    flex: 3,
+  },
   resultText: {
+    flex: 1,
     fontSize: 20,
     color: 'black',
+
+
   },
 };
 

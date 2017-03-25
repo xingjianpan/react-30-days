@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
-import { startClock, stopClock, resetClock, logCurrent, startTick, setTimer } from '../../actions/Day4';
+import { startClock, stopClock, resetClock, logCurrent, Tick, setTimer } from '../../actions/Day4';
 
 class Day4 extends Component {
 
@@ -18,8 +18,8 @@ class Day4 extends Component {
   handlStartButton() {
     this.props.startClock();
     const timerId = setInterval(() => {
-      this.props.startTick();
-    }, 1000);
+      this.props.Tick();
+    }, 10);
     this.props.setTimer(timerId);
   }
 
@@ -58,6 +58,9 @@ class Day4 extends Component {
     //   return this.props.logs.reduce((a, b) => a + b, 0);
     // }
 
+    if (this.props.started) {
+      return this.props.now - this.props.startTime;
+    }
     return this.props.logs.reduce((a, b) => a + b, 0);
   }
 
@@ -77,11 +80,9 @@ class Day4 extends Component {
         </View>
 
         <View style={styles.resultConainer}>
-          <ScrollView
-            automaticallyAdjustContentInsets
-          >
+          <View>
             { this.renderResults() }
-          </ScrollView>
+          </View>
         </View>
       </View>
     );
@@ -143,9 +144,10 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-  const { started, logs, counter, timerId, now } = state.day4;
+  const { started, startTime, logs, counter, timerId, now } = state.day4;
   return {
     started,
+    startTime,
     logs,
     counter,
     timerId,
@@ -154,4 +156,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps,
-  { startClock, stopClock, resetClock, logCurrent, startTick, setTimer })(Day4);
+  { startClock, stopClock, resetClock, logCurrent, Tick, setTimer })(Day4);

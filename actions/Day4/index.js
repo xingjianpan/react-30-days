@@ -33,12 +33,9 @@ export const setTimer = (timerId) => {
   };
 };
 
-export const startTick = () => {
+export const Tick = () => {
   return {
     type: 'startTick',
     payload: Date.now(),
   };
 };
-
-
-

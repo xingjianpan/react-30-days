@@ -41,7 +41,7 @@ export default (state = INITIAL_STATE, action) => {
     case 'startTick':
       return {
         ...state,
-        now: action.payload.now,
+        now: action.payload,
       };
     default:
       return { ...state };

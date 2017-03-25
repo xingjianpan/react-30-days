@@ -1,6 +1,7 @@
 
 const INITIAL_STATE = {
   started: false,
+  initialTime: 0,
   startTime: 0,
   stopTime: 0,
   logs: [],
@@ -14,7 +15,11 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'start':
-      return { ...state, startTime: action.payload, started: true };
+      return {
+        ...state,
+        startTime: action.payload,
+        started: true,
+      };
     case 'stop':
       return {
         ...state,

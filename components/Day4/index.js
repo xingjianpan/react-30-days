@@ -54,14 +54,13 @@ class Day4 extends Component {
   }
 
   renderDisplay() {
-    // if (this.props.logs) {
-    //   return this.props.logs.reduce((a, b) => a + b, 0);
-    // }
-
+    const accumulatedTotal = this.props.logs.reduce((a, b) => a + b, 0) +
+      this.props.accumulatedTime;
     if (this.props.started) {
-      return this.props.now - this.props.startTime;
+      return accumulatedTotal + this.props.now - this.props.startTime;
     }
-    return this.props.logs.reduce((a, b) => a + b, 0);
+    // return this.props.logs.reduce((a, b) => a + b, 0);
+    return accumulatedTotal
   }
 
   render() {
@@ -144,10 +143,12 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-  const { started, startTime, logs, counter, timerId, now } = state.day4;
+  const { started, initialTime, startTime, accumulatedTime, logs, counter, timerId, now } = state.day4;
   return {
     started,
+    initialTime,
     startTime,
+    accumulatedTime,
     logs,
     counter,
     timerId,

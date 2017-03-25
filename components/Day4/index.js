@@ -16,10 +16,12 @@ class Day4 extends Component {
   }
 
   handlStartButton() {
+    this.props.startClock();
+    this.props.Tick(); // to execute the setInterval function without delay the first time
     const timerId = setInterval(() => {
       this.props.Tick();
-    }, 1000);
-    this.props.startClock();
+    }, 10);
+
     this.props.setTimer(timerId);
   }
 
@@ -55,7 +57,7 @@ class Day4 extends Component {
   renderInitialResult() {
     return (
       <View style={styles.resultRow}>
-        <Text style={styles.resultCounter}>当次：  </Text>
+        <Text style={styles.resultCounter}>当    次:</Text>
         <Text style={styles.resultText}>{this.props.now - this.props.startTime}</Text>
       </View>
     );
@@ -88,7 +90,7 @@ class Day4 extends Component {
 
         <View style={styles.resultConainer}>
           <ScrollView>
-            {this.renderInitialResult()}
+            { this.renderInitialResult()}
             { this.renderResults() }
           </ScrollView>
         </View>

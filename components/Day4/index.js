@@ -2,23 +2,32 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
-import { startClock, stopClock, resetClock, logCurrent } from '../../actions/Day4';
+import { startClock, stopClock, resetClock, logCurrent, startTick, setTimer } from '../../actions/Day4';
 
 class Day4 extends Component {
+
   constructor(props, context) {
     super(props, context);
   }
 
-  handleResetButton() {
-
+  handleStopButton() {
+    this.props.stopClock();
+    clearInterval(this.props.timerId);
   }
 
+  handlStartButton() {
+    this.props.startClock();
+    const timerId = setInterval(() => {
+      this.props.startTick();
+    }, 1000);
+    this.props.setTimer(timerId);
+  }
 
   renderStartButton() {
     if (this.props.started) {
-      return <Button onPress={this.props.stopClock.bind(this)}>stop</Button>;
+      return <Button onPress={this.handleStopButton.bind(this)}>stop</Button>;
     }
-    return <Button onPress={this.props.startClock.bind(this)}>start</Button>;
+    return <Button onPress={this.handlStartButton.bind(this)}>start</Button>;
   }
 
   renderResetButton() {
@@ -45,9 +54,11 @@ class Day4 extends Component {
   }
 
   renderDisplay() {
-    if (this.props.logs) {
-      return this.props.logs.reduce((a, b) => a + b, 0);
-    }
+    // if (this.props.logs) {
+    //   return this.props.logs.reduce((a, b) => a + b, 0);
+    // }
+
+    return this.props.logs.reduce((a, b) => a + b, 0);
   }
 
   render() {
@@ -123,7 +134,7 @@ const styles = {
     height: 50,
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
+    borderBottomColor: '#ccc',
   },
   resultText: {
     fontSize: 20,
@@ -132,13 +143,15 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-  const { started, logs, counter } = state.day4;
+  const { started, logs, counter, timerId, now } = state.day4;
   return {
     started,
     logs,
     counter,
+    timerId,
+    now,
   };
 }
 
 export default connect(mapStateToProps,
-  { startClock, stopClock, resetClock, logCurrent })(Day4);
+  { startClock, stopClock, resetClock, logCurrent, startTick, setTimer })(Day4);

@@ -4,9 +4,10 @@ const INITIAL_STATE = {
   startTime: 0,
   stopTime: 0,
   logs: [],
-  watingForAction: true,
   accumulatedTime: 0,
   counter: 0,
+  timerId: null,
+  now: 0,
 };
 
 
@@ -19,7 +20,6 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         stopTime: action.payload,
         started: false,
-        watingForAction: true,
         accumulatedTime: (action.payload - state.startTime + state.accumulatedTime),
         // logs: [...state.logs, action.payload - state.startTime],
       };
@@ -32,6 +32,16 @@ export default (state = INITIAL_STATE, action) => {
         startTime: action.payload,
         accumulatedTime: 0,
         counter: state.counter + 1,
+      };
+    case 'setTimer':
+      return {
+        ...state,
+        timerId: action.payload,
+      };
+    case 'startTick':
+      return {
+        ...state,
+        now: action.payload.now,
       };
     default:
       return { ...state };

@@ -5,7 +5,6 @@ export const startClock = () => {
   };
 };
 
-
 export const stopClock = () => {
   return {
     type: 'stop',
@@ -26,3 +25,20 @@ export const logCurrent = () => {
     payload: Date.now(),
   };
 };
+
+export const setTimer = (timerId) => {
+  return {
+    type: 'setTimer',
+    payload: timerId,
+  };
+};
+
+export const startTick = () => {
+  return {
+    type: 'startTick',
+    payload: Date.now(),
+  };
+};
+
+
+

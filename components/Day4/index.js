@@ -28,13 +28,27 @@ class Day4 extends Component {
     return <Button onPress={this.props.resetClock.bind(this)}>reset</Button>;
   }
 
+  renderResults() {
+    if (this.props.logs) {
+      return this.props.logs.map(log => <Text style={styles.resultText}>{log}</Text>);
+    }
+    return '';
+  }
+
+  renderDisplay() {
+    setInterval(
+      () => { },
+      100,
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
 
         <View style={styles.displayContainer}>
           <View style={styles.clockContainer}>
-            <Text style={styles.mainClock}>00:00:00</Text>
+            <Text style={styles.mainClock}>{this.renderDisplay()}</Text>
           </View>
           <View style={styles.buttonContainer}>
             {this.renderResetButton()}
@@ -42,8 +56,9 @@ class Day4 extends Component {
           </View>
 
         </View>
-        <View style={styles.resultConainer}>
 
+        <View style={styles.resultConainer}>
+          {this.renderResults()}
         </View>
       </View>
     );
@@ -90,12 +105,17 @@ const styles = {
     fontSize: 10,
     color: 'white',
   },
+  resultText: {
+    fontSize: 15,
+    color: 'red',
+  },
 };
 
 function mapStateToProps(state) {
-  const { started } = state.day4;
+  const { started, logs } = state.day4;
   return {
-    started
+    started,
+    logs,
   };
 }
 

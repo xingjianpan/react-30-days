@@ -6,13 +6,16 @@ import Button from 'react-native-button';
 class ClockButton extends Component {
   render() {
     return (
-      <Button
-        containerStyle={[styles.buttonContainer, this.props.style]}
-        style={styles.button}
-        styleDisabled={{color: 'red'}}
-        onPress={this.props.onPress}>
-        {this.props.children}
-      </Button>
+      <View>
+        <Button
+          containerStyle={[styles.buttonContainer, this.props.style]}
+          style={styles.button}
+          styleDisabled={{ color: 'red' }}
+          onPress={this.props.onPress}
+        >
+          {this.props.children}
+        </Button>
+      </View>
     );
   }
 }

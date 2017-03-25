@@ -11,16 +11,18 @@ class Day4 extends Component {
   }
 
   renderTimeFormat(number) {
-    var milSecond = Math.floor((number%1000)/10);
-    var sec_num = parseInt(number/1000, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    let milSecond = number % 1000 < 100 ?
+      '0' + Math.floor((number % 1000) / 10) :
+      Math.floor((number % 1000) / 10);
+    const sec_num = parseInt(number / 1000, 10); // don't forget the second param
+    let hours   = Math.floor(sec_num / 3600);
+    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    let seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {hours   = "0"+hours;}
+    if (hours < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
-    return minutes+':'+seconds + ':' + milSecond;
+    return minutes + ':' + seconds + ':' + milSecond;
   }
   handleStopButton() {
     this.props.stopClock();
@@ -142,8 +144,7 @@ const styles = {
     alignItems: 'center',
   },
   mainClock: {
-    fontSize: 80,
-    borderWidth: 1,
+    fontSize: 70,
 
   },
   buttonContainer: {

@@ -55,10 +55,16 @@ class Day4 extends Component {
   }
 
   renderInitialResult() {
+    let displayTime;
+    if (this.props.started) {
+      displayTime = this.props.accumulatedTime + this.props.now - this.props.startTime;
+    } else {
+      displayTime = this.props.accumulatedTime;
+    }
     return (
       <View style={styles.resultRow}>
         <Text style={styles.resultCounter}>当    次:</Text>
-        <Text style={styles.resultText}>{this.props.now - this.props.startTime}</Text>
+        <Text style={styles.resultText}>{displayTime}</Text>
       </View>
     );
   }

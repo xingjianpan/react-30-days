@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, ListView } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
 import { startClock, stopClock, resetClock, logCurrent, Tick, setTimer } from '../../actions/Day4';
@@ -52,20 +52,23 @@ class Day4 extends Component {
   }
 
   renderResults() {
-    if (this.props.logs.length > 0) {
-      return this.props.logs.reverse().map(
-        (log, idx) => {
-          return (
-            <View style={styles.resultRow}>
-              <Text style={styles.resultCounter}>计次：{ this.props.counter - idx} </Text>
-              <Text style={styles.resultText}>{this.renderTimeFormat(log)}</Text>
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    const theDataSource = ds.cloneWithRows(this.props.logs);
+    return (
+      <ListView
+        style={styles.recordList}
+        dataSource={theDataSource}
+        renderRow={(rowData, sectionId, rowId) =>
+          <View style={styles.resultRow}>
+            <Text style={styles.resultCounter}> {Number(rowId) + 2}</Text>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={styles.resultText}>{this.renderTimeFormat(rowData)}</Text>
             </View>
-          );
-        },
-      );
-    }
+          </View>
+          }
+      />
+    );
   }
-
 
 
   renderInitialResult() {

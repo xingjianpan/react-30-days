@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   logs: [],
   watingForAction: true,
   accumulatedTime: 0,
+  counter: 0,
 };
 
 
@@ -30,6 +31,7 @@ export default (state = INITIAL_STATE, action) => {
         logs: [...state.logs, action.payload - state.startTime + state.accumulatedTime],
         startTime: action.payload,
         accumulatedTime: 0,
+        counter: state.counter + 1,
       };
     default:
       return { ...state };

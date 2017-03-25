@@ -30,7 +30,16 @@ class Day4 extends Component {
 
   renderResults() {
     if (this.props.logs) {
-      return this.props.logs.reverse().map(log => <Text style={styles.resultText}>{log}</Text>);
+      return this.props.logs.reverse().map(
+        (log, idx) => {
+          return (
+            <View style={styles.resultRow}>
+              <Text style={styles.resultCounter}>{ this.props.counter - idx} </Text>
+              <Text style={styles.resultText}>{log}</Text>
+            </View>
+          );
+        },
+      );
     }
     return '';
   }
@@ -102,23 +111,31 @@ const styles = {
   },
   resultConainer: {
     flex: 1,
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
   },
   button: {
     fontSize: 10,
     color: 'white',
   },
+  resultRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 50,
+    padding: 10,
+    borderBottomWidth: 1,
+  },
   resultText: {
-    fontSize: 15,
-    color: 'red',
+    fontSize: 20,
+    color: 'black',
   },
 };
 
 function mapStateToProps(state) {
-  const { started, logs } = state.day4;
+  const { started, logs, counter } = state.day4;
   return {
     started,
     logs,
+    counter,
   };
 }
 

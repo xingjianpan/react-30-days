@@ -6,24 +6,6 @@ import { startClock, stopClock, resetClock, logCurrent, Tick, setTimer } from '.
 
 class Day4 extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-  }
-
-  renderTimeFormat(number) {
-    let milSecond = number % 1000 < 100 ?
-      '0' + Math.floor((number % 1000) / 10) :
-      Math.floor((number % 1000) / 10);
-    const sec_num = parseInt(number / 1000, 10); // don't forget the second param
-    let hours   = Math.floor(sec_num / 3600);
-    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    let seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    if (hours < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return minutes + ':' + seconds + ':' + milSecond;
-  }
   handleStopButton() {
     this.props.stopClock();
     clearInterval(this.props.timerId);
@@ -41,16 +23,16 @@ class Day4 extends Component {
 
   renderStartButton() {
     if (this.props.started) {
-      return <Button onPress={this.handleStopButton.bind(this)}>stop</Button>;
+      return <Button style={{ backgroundColor: 'red' }} onPress={this.handleStopButton.bind(this)}>stop</Button>;
     }
-    return <Button onPress={this.handlStartButton.bind(this)}>start</Button>;
+    return <Button style={{ backgroundColor: 'green' }} onPress={this.handlStartButton.bind(this)}>start</Button>;
   }
 
   renderResetButton() {
     if (this.props.started) {
-      return <Button onPress={this.props.logCurrent.bind(this)}>log</Button>;
+      return <Button style={{ backgroundColor: '#ccc' }} onPress={this.props.logCurrent.bind(this)}>log</Button>;
     }
-    return <Button onPress={this.props.resetClock.bind(this)}>reset</Button>;
+    return <Button style={{ backgroundColor: '#302929' }}onPress={this.props.resetClock.bind(this)}>reset</Button>;
   }
 
   renderResults() {
@@ -97,6 +79,22 @@ class Day4 extends Component {
     return this.renderTimeFormat(accumulatedTotal);
   }
 
+
+  renderTimeFormat(number) {
+    const milSecond = number % 1000 < 100 ?
+      '0' + Math.floor((number % 1000) / 10) :
+      Math.floor((number % 1000) / 10);
+    const secNum = parseInt(number / 1000, 10); // don't forget the second param
+    let hours = Math.floor(secNum / 3600);
+    let minutes = Math.floor((secNum - (hours * 3600)) / 60);
+    let seconds = secNum - (hours * 3600) - (minutes * 60);
+
+    if (hours < 10) { hours = '0' + hours; }
+    if (minutes < 10) { minutes = '0' + minutes; }
+    if (seconds < 10) { seconds = '0' + seconds; }
+    return minutes + ':' + seconds + ':' + milSecond;
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -126,7 +124,7 @@ class Day4 extends Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     marginTop: 64,
   },
   displayContainer: {
@@ -143,6 +141,7 @@ const styles = {
   },
   mainClock: {
     fontSize: 70,
+    color: 'white',
 
   },
   buttonContainer: {
@@ -156,7 +155,7 @@ const styles = {
   },
   resultConainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     flexDirection: 'row',
   },
   button: {
@@ -174,11 +173,12 @@ const styles = {
 
   resultCounter: {
     flex: 3,
+    color: 'white',
   },
   resultText: {
     flex: 1,
     fontSize: 20,
-    color: 'black',
+    color: 'white',
 
 
   },

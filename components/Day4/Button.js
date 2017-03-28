@@ -4,7 +4,9 @@ import Button from 'react-native-button';
 
 
 class ClockButton extends Component {
+
   render() {
+      console.log(this.props)
     return (
       <View>
         <Button
@@ -28,7 +30,7 @@ const styles = {
     width: 80,
     overflow: 'hidden',
     borderRadius: 50,
-    backgroundColor: 'gray',
+    // backgroundColor: 'gray',
     justifyContent: 'center',
   },
   button: {

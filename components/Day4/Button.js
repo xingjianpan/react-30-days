@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import Button from 'react-native-button';
 
-
 class ClockButton extends Component {
 
   render() {
-      console.log(this.props)
     return (
       <View>
         <Button

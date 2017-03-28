@@ -42,10 +42,11 @@ class Day4 extends Component {
       <ListView
         style={styles.recordList}
         dataSource={theDataSource}
+        enableEmptySections
         renderRow={(rowData, sectionId, rowId) =>
           <View style={styles.resultRow}>
             <Text style={styles.resultCounter}> 计次：{Number(rowId) + 2}</Text>
-              <Text style={styles.resultText}>{this.renderTimeFormat(rowData)}</Text>
+            <Text style={styles.resultText}>{this.renderTimeFormat(rowData)}</Text>
           </View>
           }
       />

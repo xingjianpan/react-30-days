@@ -36,10 +36,35 @@ const HourlyItem = ({item}) => {
   );
 };
 
+const DailyData = () => {
+  return (
+    <View>
+      {weatherData[0].days.map(item => <DailyItem item={item} />)}
+    </View>
+  );
+};
+
+const DailyItem = ({ item }) => {
+  return (
+    <View style={styles.dailyItemContainer}>
+      <Text style={styles.dailyItemText} >{item.day}</Text>
+      <Icon
+        name={item.icon}
+        size={25}
+        style={styles.DailyItemIcon}
+      />
+      <View style={styles.dailyItemDegree}>
+        <Text style={styles.hourlyItemDegreeHigh}>{item.high}</Text>
+        <Text style={styles.hourlyItemDegreeLow}>{item.low}</Text>
+      </View>
+    </View>
+  );
+};
+
 class WeatherCity extends Component {
   render() {
     return (
-      <ScrollView style={styles.weatherContainer}>
+      <View style={styles.weatherContainer}>
         <View style={styles.topContainer}>
           <View style={styles.city}>
             <Text style={styles.cityText}>北京</Text>
@@ -54,27 +79,32 @@ class WeatherCity extends Component {
         <View style={styles.hourelyDataContainer}>
           <HourlyData />
         </View>
-        <View style={styles.mainContainer} >
+        <ScrollView style={styles.mainContainer} >
           <View style={styles.dailyData}>
-            <Text> Daily data</Text>
+            <DailyData />
           </View>
           <View style={styles.summary}>
-            <Text>今天：今日局部多云。最高气温20.今晚局部多云，最低气温8。</Text>
+            <Text style={styles.summaryText}>今天：今日局部多云。最高气温20.今晚局部多云，最低气温8。</Text>
           </View>
           <View style={styles.details}>
-            <Text>日出： 06:02</Text>
+            <Text>日出: 06:02</Text>
             <Text>日落:18:35</Text>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
 
 const WeatherSwiper = (props) => {
   return (
-    <Swiper style={styles.wrapper} >
-      <View  style={styles.slide1}>
+    <Swiper
+      style={styles.wrapper}
+      paginationStyle={{bottom:10, paddingTop:10, borderTopColor:"rgba(255,255,255,0.7)",borderTopWidth:Util.pixel}}
+      dot={<View style={{backgroundColor: 'rgba(255,255,255,0.2)', width: 6, height: 6, borderRadius: 3, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}
+
+    >
+      <View style={styles.slide1}>
         <WeatherCity />
       </View>
       <View style={styles.slide2}>
@@ -90,10 +120,12 @@ const WeatherSwiper = (props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
+
   },
   slide1: {
     flex: 1,
     marginTop: 64,
+
     // justifyContent: 'center',
     // alignItems: 'center',
     backgroundColor: '#9DD6EB',
@@ -122,7 +154,7 @@ const styles = StyleSheet.create({
     height: 0.5,
   },
   weatherContainer: {
-
+    backgroundColor:"transparent",
   },
   topContainer: {
     paddingTop: 20,
@@ -153,7 +185,7 @@ const styles = StyleSheet.create({
   hourelyDataContainer: {
     marginTop: 3,
     borderTopColor: "rgba(255,255,255,0.7)",borderTopWidth:Util.pixel,
-    borderBottomColor: "rgba(255,255,255,0.7)",borderBottomWidth:Util.pixel
+    borderBottomColor: "rgba(255,255,255,0.7)",borderBottomWidth:Util.pixel,
   },
   hourlyItemContainer:{
     paddingLeft: 7,
@@ -179,17 +211,57 @@ const styles = StyleSheet.create({
     textAlign:"center"
   },
   mainContainer: {
-    height: 200,
+    // height: 200,
+    height: 300,
 
   },
   dailyData: {
-    borderWidth: 1,
+    marginTop: 3,
+    borderBottomColor: "rgba(255,255,255,0.7)",borderBottomWidth:Util.pixel,
+  },
+  dailyItemContainer: {
+    flexDirection:"row",
+    width: Util.size.width,
+  },
+  dailyItemText: {
+    flex:1,
+    flexDirection:"row",
+    justifyContent: 'flex-start',
+    paddingLeft: 20,
+    color: '#fff',
+  },
+  dailyItemDegree: {
+    flex:1,
+    flexDirection:"row",
+    justifyContent: 'flex-end',
+    paddingRight: 10,
+  },
+  hourlyItemDegreeHigh:{
+    fontSize:16,
+    color: "#fff",
+    fontWeight: "200",
+    width:30,
+  },
+  hourlyItemDegreeLow:{
+    fontSize: 16,
+    color: "#eee",
+    fontWeight: "200",
+    width: 30,
+  },
+  DailyItemIcon: {
+    color:'#fff'
   },
   summary: {
-    borderWidth: 1,
+    marginTop: 3,
+    borderBottomColor: "rgba(255,255,255,0.7)",borderBottomWidth:Util.pixel,
+  },
+  summaryText: {
+    color: '#fff',
+    fontSize: 16,
+    padding: 5,
   },
   details: {
-    borderWidth: 1,
+
   },
 
 });

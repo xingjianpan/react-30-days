@@ -4,6 +4,7 @@ import {
   Text,
   View,
   ScrollView,
+  Image,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -159,26 +160,13 @@ const styles = StyleSheet.create({
   wrapper: {
 
   },
+
   slide1: {
     flex: 1,
     marginTop: 64,
+    backgroundColor:'transparent',
+  },
 
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
   text: {
     color: '#fff',
     fontSize: 30,
@@ -191,7 +179,9 @@ const styles = StyleSheet.create({
     height: 0.5,
   },
   weatherContainer: {
-    backgroundColor:"transparent",
+    flex: 1,
+    marginTop: 64,
+    backgroundColor:'transparent',
   },
   topContainer: {
     paddingTop: 20,
@@ -319,7 +309,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
     textAlign: 'left'
-  }
+  },
+
 });
 
 export default WeatherSwiper;

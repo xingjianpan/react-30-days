@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Util from '../../utils';
 
@@ -26,7 +26,7 @@ const WeatherHouly = ({ data }) => {
 };
 
 
-const styles = {
+const styles = StyleSheet.create({
   hourelyDataContainer: {
     marginTop: 3,
     borderTopColor: 'rgba(255,255,255,0.7)',
@@ -45,7 +45,7 @@ const styles = {
   hourlyItemText: {
     color: '#fff',
     fontSize: 12,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   hourlyItemIcon: {
     textAlign: 'center',
@@ -57,6 +57,6 @@ const styles = {
     paddingTop: 10,
     textAlign: 'center',
   },
-};
+});
 
 export default WeatherHouly;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Util from '../../utils';
 
 const WeatherInfo = ({ item }) => {
@@ -55,7 +55,7 @@ const WeatherInfo = ({ item }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
 
   summary: {
     marginTop: 3,
@@ -90,6 +90,6 @@ const styles = {
     color: '#fff',
     textAlign: 'left',
   },
-};
+});
 
 export default WeatherInfo;

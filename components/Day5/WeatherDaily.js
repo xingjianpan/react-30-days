@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Util from '../../utils';
 
@@ -29,7 +29,7 @@ const DailyItem = ({ item }) => {
 };
 
 
-const styles = {
+const styles = StyleSheet.create({
   dailyData: {
     marginTop: 3,
     borderBottomColor: 'rgba(255,255,255,0.7)',
@@ -68,6 +68,6 @@ const styles = {
     fontWeight: '200',
     width: 30,
   },
-};
+});
 
 export default WeatherDaily;

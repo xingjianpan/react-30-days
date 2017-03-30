@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 const WeatherTop = ({ item }) => {
   return (
@@ -15,7 +15,7 @@ const WeatherTop = ({ item }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   topContainer: {
     paddingTop: 20,
     justifyContent: 'center',
@@ -42,5 +42,6 @@ const styles = {
     fontSize: 80,
     color: 'white',
   },
-}
+});
+
 export default WeatherTop;

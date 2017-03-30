@@ -40,14 +40,14 @@ const styles = {
     width: Util.size.width,
   },
   dailyItemText: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     paddingLeft: 20,
     color: '#fff',
   },
   dailyItemDegree: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     paddingRight: 10,
@@ -56,7 +56,7 @@ const styles = {
   DailyItemIcon: {
     color: '#fff',
   },
-  dailyItemDegreeHigh:{
+  dailyItemDegreeHigh: {
     fontSize: 16,
     color: '#fff',
     fontWeight: '200',

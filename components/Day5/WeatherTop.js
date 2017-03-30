@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Util from '../../utils';
 
 const WeatherTop = ({ item }) => {
   return (

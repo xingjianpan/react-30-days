@@ -9,6 +9,7 @@ import { Platform,Animated,Easing,Image,RefreshControl,ScrollView,StatusBar,Styl
 import Util from '../../utils';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import Day1 from '../Day1';
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
@@ -56,190 +57,6 @@ class Entrance extends Component{
   }
 }
 
-class TwitterPost extends Component{
-  constructor() {
-    super();
-    this.state = {
-      isRefreshing: false,
-    };
-  }
-
-  _onRefresh() {
-    this.setState({
-      isRefreshing: true,
-    });
-    setTimeout(() => {
-      this.setState({
-        isRefreshing: false,
-      });
-    }, 1000);
-  }
-
-  render() {
-    return(
-      <ScrollView
-      refreshControl={
-          <RefreshControl
-            refreshing={this.state.isRefreshing}
-            onRefresh={()=>this._onRefresh()}
-            tintColor="#ddd"/>}>
-            <Image source={require('./img/day3.png')} style={{width:Util.size.width, height:Util.size.height-110}}></Image>
-      </ScrollView>
-    )
-  }
-}
-
-class TwitterFlow extends Component{
-  render() {
-    return(
-      <View>
-        <View style={styles.nav}>
-          <View style={styles.navLeft}>
-            <Icon name="ios-person-add" size={23} style={{color:"#1b95e0", paddingLeft:10}}></Icon>
-          </View>
-          <View style={styles.navMid}>
-            <Icon name="logo-twitter" size={27} style={{color:"#1b95e0"}}></Icon>
-          </View>
-          <View style={styles.navRight}>
-            <Icon name="ios-search" size={23} style={{color:"#1b95e0", width:30}}></Icon>
-            <Icon name="ios-create-outline" size={23} style={{color:"#1b95e0", width:30, paddingRight:10}}></Icon>
-          </View>
-        </View>
-        <TwitterPost></TwitterPost>
-      </View>
-    )
-  }
-}
-
-const FacebookTabBar = React.createClass({
-  tabIcons: [],
-
-  propTypes: {
-    goToPage: React.PropTypes.func,
-    activeTab: React.PropTypes.number,
-    tabs: React.PropTypes.array,
-  },
-
-  componentDidMount() {
-    setTimeout( () => this.props.goToPage(0), 0 );
-    this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
-  },
-
-  setAnimationValue({ value, }) {
-    this.tabIcons.forEach((icon, i) => {
-      const progress = (value - i >= 0 && value - i <= 1) ? value - i : 1;
-      icon.setNativeProps({
-        style: {
-          color: this.iconColor(progress),
-        },
-      });
-    });
-  },
-
-  //color between rgb(59,89,152) and rgb(204,204,204)
-  iconColor(progress) {
-    const red = 49 + (159 - 49) * progress;
-    const green = 149 + (159 - 149) * progress;
-    const blue = 215 + (159 - 215) * progress;
-    return `rgb(${red}, ${green}, ${blue})`;
-  },
-
-  render() {
-    return <View style={[styles.tabs, this.props.style, ]}>
-      {this.props.tabs.map((tab, i) => {
-        return <TouchableOpacity key={tab} onPress={() => setTimeout( () => this.props.goToPage(i), 0 )} style={styles.tab}>
-          <Icon
-            name={tab}
-            size={30}
-            color={this.props.activeTab === i ? 'rgb(49,149,215)' : 'rgb(159,159,159)'}
-            ref={(icon) => { this.tabIcons[i] = icon; }}
-          />
-        </TouchableOpacity>;
-      })}
-    </View>;
-  },
-});
-
-
-class TwitterTab extends Component{
-  constructor() {
-    super();
-    this.state = {
-      selectedTab:'主页',
-      title:'主页',
-    };
-  }
-
-  changeTab(tabName) {
-      this.setState({
-        selectedTab: tabName
-      });
-  }
-
-  _updateTitle(obj) {
-    const {i} = obj;
-    let title = "";
-    switch(i) {
-      case 0:
-        title = "主页";
-        break;
-      case 1:
-        title = "通知";
-        break;
-      case 2:
-        title = "私信";
-        break;
-      case 3:
-        title = "我";
-        break;
-    }
-    this.setState({
-      title
-    });
-  }
-
-  render(){
-    return (
-      <TabBarIOS
-          barTintColor="#fff"
-          tintColor="#1b95e0">
-        <Icon.TabBarItem
-          title="主页"
-          iconName="ios-home-outline"
-          selectedIconName="ios-home"
-          onPress={ () => this.changeTab('主页') }
-          selected={ this.state.selectedTab === '主页' }>
-          <TwitterFlow/>
-        </Icon.TabBarItem>
-        <Icon.TabBarItem
-          title="通知"
-          iconName="ios-notifications-outline"
-          selectedIconName="ios-notifications"
-          onPress={ () => this.changeTab('通知') }
-          selected={ this.state.selectedTab === '通知'}>
-          <TwitterFlow/>
-        </Icon.TabBarItem>
-        <Icon.TabBarItem
-          title="私信"
-          iconName="ios-mail-outline"
-          selectedIconName="ios-mail"
-          onPress={ () => this.changeTab('私信') }
-          selected={ this.state.selectedTab === '私信'}>
-          <TwitterFlow/>
-        </Icon.TabBarItem>
-        <Icon.TabBarItem
-          title="我"
-          iconName="ios-person-outline"
-          selectedIconName="ios-person"
-          onPress={ () => this.changeTab('我') }
-          selected={ this.state.selectedTab === '我'}>
-          <TwitterFlow/>
-        </Icon.TabBarItem>
-      </TabBarIOS>
-    )
-  }
-}
-
 class Twitter extends Component{
   constructor() {
     super();
@@ -264,7 +81,7 @@ class Twitter extends Component{
     let entrance = this.state.show? <Entrance hideThis={()=> this._hideEntrance()}/>:<View></View>
     return(
       <View style={styles.twitterContainer}>
-        <TwitterTab/>
+        <Day1/>
         {entrance}
       </View>
     )

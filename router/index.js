@@ -19,7 +19,7 @@ const RouterComponent = () => {
       </Scene>
       <Scene title="Day-3" key="day3" component={Day3} hideNavBar />
       <Scene title="Day-4" key="day4" component={Day4} />
-      <Scene title="Day-5" key="day5" component={Day5} />
+      <Scene title="Day-5" key="day5" component={Day5} hideNavBar />
     </Router>
   );
 };

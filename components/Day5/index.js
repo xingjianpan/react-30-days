@@ -69,14 +69,14 @@ const styles = StyleSheet.create({
   },
   slide: {
     flex: 1,
-    marginTop: 64,
+    // marginTop: 64,
     backgroundColor: '#97CAE5',
 
   },
   weatherContainer: {
   },
   scrollViewContainer: {
-    height: 300,
+    height: 350,
   },
 });
 

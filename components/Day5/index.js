@@ -145,8 +145,8 @@ const WeatherSwiper = (props) => {
     >
       {weatherData.map((item) => {
         return (
-          <View style={styles.slide1}>
-            <WeatherCity item={item} key={item.key} />
+          <View style={styles.slide1} key={item.key}>
+            <WeatherCity item={item}  />
           </View>
         );
       })
@@ -164,7 +164,8 @@ const styles = StyleSheet.create({
   slide1: {
     flex: 1,
     marginTop: 64,
-    backgroundColor:'transparent',
+    backgroundColor: '#97CAE5',
+
   },
 
   text: {
@@ -179,9 +180,7 @@ const styles = StyleSheet.create({
     height: 0.5,
   },
   weatherContainer: {
-    flex: 1,
-    marginTop: 64,
-    backgroundColor:'transparent',
+
   },
   topContainer: {
     paddingTop: 20,

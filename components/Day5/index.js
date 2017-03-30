@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
 
   },
   weatherContainer: {
+    marginBottom: 10,
   },
   scrollViewContainer: {
     height: 350,

@@ -53,6 +53,15 @@ class Welcome extends Component {
           color: '#90bdc1',
           hideNav: false,
         },
+        { key: 6,
+          title: 'Day6',
+          route: 'day6',
+          isFA: false,
+          icon: 'logo-twitter',
+          size: 50,
+          color: '#2aa2ef',
+          hideNav: true,
+        },
       ],
     };
   }

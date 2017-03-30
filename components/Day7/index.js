@@ -7,17 +7,22 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import MapView, { MAP_TYPES } from 'react-native-maps';
+import MapView from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 40.78825;
-const LONGITUDE = 117.4324;
+const LATITUDE = 37.78825;
+const LONGITUDE = -122.4324;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+let id = 0;
 
-class DisplayLatLng extends React.Component {
+function randomColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+class DefaultMarkers extends React.Component {
   constructor(props) {
     super(props);
 
@@ -28,28 +33,21 @@ class DisplayLatLng extends React.Component {
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
+      markers: [],
     };
   }
 
-  onRegionChange(region) {
-    this.setState({ region });
-  }
-
-  jumpRandom() {
-    this.setState({ region: this.randomRegion() });
-  }
-
-  animateRandom() {
-    this.map.animateToRegion(this.randomRegion());
-  }
-
-  randomRegion() {
-    const { region } = this.state;
-    return {
-      ...this.state.region,
-      latitude: region.latitude + ((Math.random() - 0.5) * (region.latitudeDelta / 2)),
-      longitude: region.longitude + ((Math.random() - 0.5) * (region.longitudeDelta / 2)),
-    };
+  onMapPress(e) {
+    this.setState({
+      markers: [
+        ...this.state.markers,
+        {
+          coordinate: e.nativeEvent.coordinate,
+          key: id++,
+          color: randomColor(),
+        },
+      ],
+    });
   }
 
   render() {
@@ -57,30 +55,24 @@ class DisplayLatLng extends React.Component {
       <View style={styles.container}>
         <MapView
           provider={this.props.provider}
-          ref={ref => { this.map = ref; }}
-          mapType={MAP_TYPES.TERRAIN}
           style={styles.map}
           initialRegion={this.state.region}
-          onRegionChange={region => this.onRegionChange(region)}
-        />
-        <View style={[styles.bubble, styles.latlng]}>
-          <Text style={{ textAlign: 'center' }}>
-            {this.state.region.latitude.toPrecision(7)},
-            {this.state.region.longitude.toPrecision(7)}
-          </Text>
-        </View>
+          onPress={(e) => this.onMapPress(e)}
+        >
+          {this.state.markers.map(marker => (
+            <MapView.Marker
+              key={marker.key}
+              coordinate={marker.coordinate}
+              pinColor={marker.color}
+            />
+          ))}
+        </MapView>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => this.jumpRandom()}
-            style={[styles.bubble, styles.button]}
+            onPress={() => this.setState({ markers: [] })}
+            style={styles.bubble}
           >
-            <Text>Jump</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.animateRandom()}
-            style={[styles.bubble, styles.button]}
-          >
-            <Text>Animate</Text>
+            <Text>Tap to create a marker of random color</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -88,7 +80,7 @@ class DisplayLatLng extends React.Component {
   }
 }
 
-DisplayLatLng.propTypes = {
+DefaultMarkers.propTypes = {
   provider: MapView.ProviderPropType,
 };
 
@@ -124,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = DisplayLatLng;
+module.exports = DefaultMarkers;

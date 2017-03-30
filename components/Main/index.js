@@ -62,6 +62,15 @@ class Welcome extends Component {
           color: '#2aa2ef',
           hideNav: true,
         },
+        { key: 7,
+          title: 'Day 7',
+          route: 'day7',
+          isFA: false,
+          icon: 'md-pin',
+          size: 50,
+          color: '#00D204',
+          hideNav: false,
+        },
       ],
     };
   }

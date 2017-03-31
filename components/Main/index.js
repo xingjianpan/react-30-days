@@ -71,6 +71,15 @@ class Welcome extends Component {
           color: '#00D204',
           hideNav: false,
         },
+        { key: 7,
+          title: 'Day 8',
+          route: 'day8',
+          isFA: false,
+          icon: 'md-add',
+          size: 50,
+          color: '#00D204',
+          hideNav: false,
+        },
       ],
     };
   }

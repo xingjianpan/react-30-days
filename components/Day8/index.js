@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
 import { tap, reset } from '../../actions/Day8';
 
-
+//http://browniefed.com/blog/react-native-press-and-hold-button-actions/
 class Day8 extends Component {
   onResetButtonPress () {
     this.props.reset();
   }
   onTapButtonPress() {
     this.props.tap();
+  }
+  onHoldButtonPress() {
+    console.log('holding..')
   }
   render() {
     return (
@@ -29,6 +32,14 @@ class Day8 extends Component {
             >
               <Text style={styles.buttonText}>Tap</Text>
             </Button>
+
+            <TouchableHighlight
+              style={styles.buttonContainer}
+              underlayColor="white"
+              onLongPress={this.onHoldButtonPress.bind(this)}
+            >
+              <Text style={styles.buttonText}>Hold</Text>
+            </TouchableHighlight>
 
             <Button
               containerStyle={styles.buttonContainer}

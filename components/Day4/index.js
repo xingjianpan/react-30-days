@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, ListView } from 'react-native';
+import { View, Text, ScrollView, ListView, TouchableHighlight  } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './Button';
 import { startClock, stopClock, resetClock, logCurrent, Tick, setTimer } from '../../actions/Day4';

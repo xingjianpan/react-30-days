@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableWithoutFeedback, Animated, StyleSheet } from 'react-native';
 
-class DayTemplate extends Component {
-  render() {
-    return (
-      <Text>Hello World</Text>
-    );
-  }
-}
-
 const ACTION_TIMER = 400;
 
 class AnimatedButtionPress extends Component {
@@ -27,19 +19,20 @@ class AnimatedButtionPress extends Component {
   }
 
   handlePressIn() {
-    Animated.Timing(this.state.pressAction, {
+    Animated.timing(this.state.pressAction, {
       duration: ACTION_TIMER,
       toValue: 1,
-    }).start(this.animationActionComplete);
+    }).start(this.animationActionComplete.bind(this));
   }
 
 
   handlePressOut() {
-    Animated.Timing(this.state.pressAction, {
+    Animated.timing(this.state.pressAction, {
       duration: this.animatedValue * ACTION_TIMER,
       toValue: 0,
     }).start();
   }
+
   animationActionComplete() {
     let message = '';
     if (this.animatedValue === 1) {
@@ -53,8 +46,8 @@ class AnimatedButtionPress extends Component {
     return (
       <View style={styles.container}>
         <TouchableWithoutFeedback
-          onPressIn={this.handlePressIn}
-          onPressOut={this.handlePressOut}
+          onPressIn={this.handlePressIn.bind(this)}
+          onPressOut={this.handlePressOut.bind(this)}
         >
           <View style={styles.button}>
             <Animated.View

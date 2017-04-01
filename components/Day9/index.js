@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableWithoutFeedback, Animated, StyleSheet } from 'react-native';
 
 const ACTION_TIMER = 400;
+const COLORS = ['rgb(255,255,255)', 'rgb(111,235,62)'];
 
 class AnimatedButtionPress extends Component {
 
@@ -10,6 +11,8 @@ class AnimatedButtionPress extends Component {
     this.state = {
       textComplete: '',
       pressAction: new Animated.Value(0),
+      buttonWidth: 100,
+      buttonHeight: 20,
     };
   }
 
@@ -42,6 +45,32 @@ class AnimatedButtionPress extends Component {
       textComplete: message,
     });
   }
+
+  getButtonWidthLayout(e) {
+    this.setState({
+      buttonWidth: e.nativeEvent.layout.width - 6,
+      buttonHeight: e.nativeEvent.layout.height - 6,
+    });
+  }
+
+  getProgressStyle() {
+    let width = this.state.pressAction.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, this.state.buttonWidth],
+    });
+
+    let bgColor = this.state.pressAction.interpolate({
+      inputRange: [0, 1],
+      outputRange: COLORS,
+    });
+
+    return {
+      width,
+      height: this.state.buttonHeight,
+      backgroundColor: bgColor,
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -49,16 +78,19 @@ class AnimatedButtionPress extends Component {
           onPressIn={this.handlePressIn.bind(this)}
           onPressOut={this.handlePressOut.bind(this)}
         >
-          <View style={styles.button}>
+          <View
+            style={styles.button}
+            onLayout={(e) => { console.log(e); }}
+          >
             <Animated.View
-              style={styles.bgFill}
+              style={[styles.bgFill, this.getProgressStyle()]}
             />
             <Text style={styles.text}>Press and hold me</Text>
           </View>
         </TouchableWithoutFeedback>
 
-        <View>
-          <Text>{this.state.textComplete}</Text>
+        <View >
+          <Text >{this.state.textComplete}</Text>
         </View>
       </View>
     );
@@ -72,7 +104,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 64,
   },
   button: {
     padding: 10,
@@ -86,7 +117,7 @@ const styles = StyleSheet.create({
   bfFill: {
     position: 'absolute',
     top: 0,
-    bottom: 0,
+    left: 0,
   },
 });
 

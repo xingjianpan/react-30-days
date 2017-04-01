@@ -33,14 +33,6 @@ class Day8 extends Component {
               <Text style={styles.buttonText}>Tap</Text>
             </Button>
 
-            <TouchableHighlight
-              style={styles.buttonContainer}
-              underlayColor="white"
-              onLongPress={this.onHoldButtonPress.bind(this)}
-            >
-              <Text style={styles.buttonText}>Hold</Text>
-            </TouchableHighlight>
-
             <Button
               containerStyle={styles.buttonContainer}
               styleDisabled={{ color: 'red' }}

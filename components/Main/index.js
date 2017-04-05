@@ -89,6 +89,15 @@ class Welcome extends Component {
           color: '#00D204',
           hideNav: false,
         },
+        { key: 10,
+          title: 'Day 10',
+          route: 'day10',
+          isFA: true,
+          icon: 'sliders',
+          size: 50,
+          color: '#00D204',
+          hideNav: false,
+        },
       ],
     };
   }

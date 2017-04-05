@@ -18,7 +18,7 @@ class DayTemplate extends Component {
   renderTip() {
     if (this.state.exp !== null) {
       const value = parseFloat(this.state.exp) * parseFloat(this.state.tip) / 100;
-      return `$${value}`;
+      return `$${value.toFixed(2)}`;
     }
     return 0;
   }
@@ -26,7 +26,7 @@ class DayTemplate extends Component {
   renderTotal() {
     if (this.state.exp !== null) {
       const value = parseFloat(this.state.exp) + parseFloat(this.state.exp) * parseFloat(this.state.tip) / 100;
-      return `$${value}`;
+      return `$${value.toFixed(2)}`;
     }
     return 0;
   }

@@ -13,6 +13,7 @@ import Day7 from '../components/Day7';
 import Day8 from '../components/Day8';
 import Day9 from '../components/Day9';
 import Day10 from '../components/Day10';
+import Day11 from '../components/Day11';
 
 const RouterComponent = () => {
   return (
@@ -25,11 +26,12 @@ const RouterComponent = () => {
       <Scene title="Day-3" key="day3" component={Day3} hideNavBar />
       <Scene title="Day-4" key="day4" component={Day4} />
       <Scene title="Day-5" key="day5" component={Day5} hideNavBar />
-      <Scene title="Day-6" key="day6" component={Day6} hideNavBar/>
+      <Scene title="Day-6" key="day6" component={Day6} hideNavBar />
       <Scene title="Day-7" key="day7" component={Day7} />
-      <Scene title="Day-8" key="day8" component={Day8} hideNavBar/>
-      <Scene title="Day-9" key="day9" component={Day9} hideNavBar/>
-      <Scene title="Day-10" key="day10" component={Day10} hideNavBar/>
+      <Scene title="Day-8" key="day8" component={Day8} hideNavBar />
+      <Scene title="Day-9" key="day9" component={Day9} hideNavBar />
+      <Scene title="Day-10" key="day10" component={Day10} hideNavBar />
+      <Scene title="Day-11" key="day11" component={Day11} hideNavBar />
     </Router>
   );
 };

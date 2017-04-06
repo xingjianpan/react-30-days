@@ -98,6 +98,15 @@ class Welcome extends Component {
           color: '#00D204',
           hideNav: false,
         },
+        { key: 11,
+          title: 'Day 11',
+          route: 'day11',
+          isFA: false,
+          icon: 'ios-list-outline',
+          size: 50,
+          color: '#68d746',
+          hideNav: true,
+        },
       ],
     };
   }

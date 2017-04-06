@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Slider, StyleSheet } from 'react-native';
 import Input from './Input'
 
-class DayTemplate extends Component {
+class Day10 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DayTemplate;
+export default Day10;
